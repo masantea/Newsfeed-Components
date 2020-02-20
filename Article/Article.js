@@ -85,6 +85,26 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+
+    title: "Mercy's newly created article ",
+    date: 'Feb 18, 2020',
+    firstParagraph: `Grievous fett calamari anakin skywalker hutt.Alderaan darth kenobi darth r2- d2
+    windu mothma.Sidious darth calamari moff.Wampa mothma sith wedge solo mara.Darth gonk maul sith moff chewbacca palpatine
+    mace amidala.C - 3po solo skywalker anakin yoda leia.Maul wampa bespin watto jade ewok darth jabba.Lando dantooine moff
+    k - 3po dantooine luke.Fisto mandalore darth wedge c - 3p0 ahsoka.Secura moff palpatine fett.Anakin sith darth darth.Moff
+    solo leia ben ponda jade.Binks jango aayla skywalker skywalker cade.Mustafar darth ventress anakin watto.Yavin jawa sebulba
+    owen jinn tatooine sith organa.`,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
+        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   }
 ];
 
@@ -112,3 +132,45 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleComponent(data){
+  const article = document.createElement('div')
+  article.classList.add('article');
+
+  const articleTitle = document.createElement('h2');
+  articleTitle.textContent = data.title;
+
+  const articleDate = document.createElement('p');
+  articleDate.classList.add('date');
+  articleDate.textContent = data.date;
+
+  const paragraphOne = document.createElement("p");
+  paragraphOne.textContent = data.firstParagraph;
+
+  const paragraphTwo = document.createElement("p");
+  paragraphTwo.textContent = data.secondParagraph;
+
+  const paragraphThree = document.createElement("p");
+  paragraphThree.textContent = data.thirdParagraph;
+
+  const button = document.createElement('span')
+  button.classList.add('expandButton')
+  button.textContent = "Expand";
+  
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(paragraphOne);
+  article.appendChild(paragraphTwo);
+  article.appendChild(paragraphThree);
+  article.appendChild(button);
+
+  button.addEventListener("click", e =>
+      article.classList.toggle("article-open")
+    );
+    return article;
+};
+
+const mainArticle = document.querySelector(".articles");
+data.forEach(function(item){
+  mainArticle.appendChild(articleComponent(item));
+});
